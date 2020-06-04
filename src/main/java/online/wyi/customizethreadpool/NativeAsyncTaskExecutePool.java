@@ -48,7 +48,7 @@ public class NativeAsyncTaskExecutePool implements AsyncConfigurer {
         //ThreadPoolExecutor.DiscardPolicy：也是丢弃任务，但是不抛出异常。
         //ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）
         //ThreadPoolExecutor.CallerRunsPolicy：不在新线程中执行任务，而是由调用者所在的线程来执行
-        executor.setRejectedExecutionHandler(new ThreadPoolExecutor.AbortPolicy());
+        executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
         executor.initialize();
 
         return executor;
